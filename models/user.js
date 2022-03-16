@@ -5,7 +5,6 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
     username: {
         type: String, 
-        unique: true, 
         required: 'User name is required', 
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'], 
         index: true
@@ -20,19 +19,17 @@ const UserSchema = new Schema({
     dob: { 
         type: Date, 
         required: 'DOB is required', 
-        // required: true 
     },
     phoneNumber: { 
         type: String, 
         required: 'phoneNumber is required', 
-        // required: true 
     },
     address: { 
         type: String, 
         required: 'Address is required', 
         maxlength: [40, 'Address must be less than 20 characters.'],
-        // required: true 
-    }
+    },
+    age: Number
 },{ timestamps: true });
 
 const User = mongoose.model("User", UserSchema);
